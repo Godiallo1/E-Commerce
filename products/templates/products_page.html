@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .wrapper{
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+    }
+</style>
+<body>
+    <p> welcome </p>
+    <div class="wrapper">
+        {% for x in products %}
+            <div class="product">
+                <img src="{{x.image.url}}" alt="">
+                <p> Name: {{x.name}}</p>
+                <p> Description: {{x.description}}</p>
+                <p> Price: {{x.price}}</p>
+                <button>Add to cart</button>
+            </div>
+        {% endfor %}
+    </div>
+</body>
+</html>

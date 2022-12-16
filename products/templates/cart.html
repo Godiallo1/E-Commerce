@@ -7,26 +7,31 @@
     <title>Document</title>
 </head>
 <style>
+    img{
+        height: 50px;
+    }
+    .product{
+        display: flex;
+        gap: 1rem;
+        align-items: center;
+    }
     .wrapper{
         display: flex;
-        flex-wrap: wrap;
+        flex-direction: column;
         gap: 1rem;
     }
 </style>
 <body>
-    <p> welcome </p> 
-    <div>
-       <a href="{% url 'cart' %}"> <button> Cart {{total}} </button> </a>
-    </div>
+    <a href="{% url 'products' %}"> <button> Previous Page </button></a>
     <div class="wrapper">
-        {% if products %}
-            {% for x in products %}
+        {% if cart %}
+            {% for x in cart %}
             <div class="product">
                 <img src="{{x.image.url}}" alt="">
                 <p> Name: {{x.name}}</p>
                 <p> Description: {{x.description}}</p>
                 <p> Price: ${{x.price}}</p>
-                <a href="{% url 'add_products' x.pk %}"> <button>Add to cart</button> </a>
+                <a href="{% url 'delete' x.pk %}"> <Button> delete </Button></a>
             </div>
             {% endfor %}
         {% endif %}
@@ -34,5 +39,10 @@
             <div> {{msg}}</div>
         {% endif %}
     </div>
+    {% if total_price != 0 %}
+        <div class="total">
+            <p> Total Price = ${{total_price}}</p>
+        </div>
+    {% endif %}
 </body>
 </html>
